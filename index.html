@@ -239,10 +239,9 @@
   </div>
   <nav class="menu-links">
     <a href="javascript:void(0)" onclick="goHome()">Accueil</a>
-    <a href="javascript:void(0)" onclick="goHome('selection')">Sélection de fêtes</a>
     <a href="javascript:void(0)" onclick="showPage('page-buches')">Carte des bûches</a>
-    <a href="javascript:void(0)" onclick="showPage('page-pains')">Carte des pains &amp; autres produits</a>
-    <a href="javascript:void(0)" onclick="goHome('comment')">Paiement en ligne</a>
+    <a href="javascript:void(0)" onclick="showPage('page-pains')">Carte des pains</a>
+    <a href="javascript:void(0)" onclick="showPage('page-autres')">Autres produits</a>
     <a href="javascript:void(0)" onclick="goHome('infos')">Retrait &amp; horaires</a>
   </nav>
 </div>
@@ -330,10 +329,22 @@
   <section class="section" style="padding-top:56px;">
     <div class="wrap">
       <div class="section-head">
-        <h2>Carte des pains &amp; autres produits</h2>
+        <h2>Carte des pains</h2>
         <p>Notre gamme de tous les jours, préparée chaque matin au fournil.</p>
       </div>
       <div id="pains-list"></div>
+    </div>
+  </section>
+</div>
+
+<div class="page" id="page-autres" hidden>
+  <section class="section" style="padding-top:56px;">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Autres produits</h2>
+        <p>Le reste de notre sélection, à retrouver en boutique toute l'année.</p>
+      </div>
+      <div id="autres-list"></div>
     </div>
   </section>
 </div>
@@ -499,7 +510,12 @@
       meta:'Pièce',
       price:1.4,
       icon:`<svg viewBox="0 0 88 88" width="88" height="88"><rect x="16" y="30" width="56" height="30" rx="10" fill="#B98A34"/><rect x="30" y="30" width="6" height="30" fill="#7E0F45"/><rect x="52" y="30" width="6" height="30" fill="#7E0F45"/></svg>`
-    },
+    }
+  ];
+
+  const autres = [
+    products[2],
+    products[3],
     products[4]
   ];
 
@@ -527,6 +543,7 @@
   renderProducts();
   renderList(buches, 'buches-list');
   renderList(pains, 'pains-list');
+  renderList(autres, 'autres-list');
 </script>
 
 </body>
