@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pâtisserie Desauw Daniel — Fêtes de fin d'année</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF1E6;
+    --paper:#F5E7D8;
+    --pink:#E01A73;
+    --pink-deep:#7E0F45;
+    --ink:#241A1B;
+    --gold:#B98A34;
+    --white:#FFFDF9;
+    --line: rgba(36,26,27,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img,svg{display:block;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--pink-deep);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:40;
+    background:rgba(251,241,230,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px;
+    max-width:1080px; margin:0 auto;
+  }
+  .brand{
+    font-family:'Pinyon Script', cursive;
+    font-size:2.1rem;
+    color:var(--pink);
+    line-height:1;
+    text-decoration:none;
+  }
+  .nav-links{
+    display:flex; gap:28px; font-size:0.95rem;
+  }
+  .nav-links a{text-decoration:none; border-bottom:1px solid transparent; padding-bottom:2px;}
+  .nav-links a:hover{border-color:var(--pink);}
+  .nav-cart{
+    display:flex; align-items:center; gap:8px;
+    background:none; border:1px solid var(--ink); border-radius:100px;
+    padding:8px 16px; font-family:'Work Sans'; font-size:0.9rem; cursor:pointer;
+    color:var(--ink);
+  }
+  .nav-cart:hover{background:var(--ink); color:var(--white);}
+  @media (max-width:760px){
+    .nav-links{display:none;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:88px 24px 96px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-bg{
+    position:absolute; inset:0; z-index:0;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(224,26,115,0.10), transparent 40%),
+      radial-gradient(circle at 88% 78%, rgba(185,138,52,0.14), transparent 45%);
+  }
+  .sprig{
+    position:absolute; opacity:0.9;
+  }
+  .hero-inner{
+    position:relative; z-index:1;
+    max-width:1080px; margin:0 auto;
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:48px; align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 4.6vw, 3.6rem);
+    line-height:1.06;
+    max-width:11ch;
+  }
+  .hero p.lede{
+    margin-top:22px; max-width:42ch; font-size:1.08rem; line-height:1.6; color:rgba(36,26,27,0.82);
+  }
+  .hero-ctas{margin-top:34px; display:flex; gap:16px; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--pink); color:var(--white); border:none;
+    padding:14px 26px; border-radius:100px; font-size:0.98rem; font-weight:600;
+    text-decoration:none; cursor:pointer; display:inline-block;
+  }
+  .btn-primary:hover{background:var(--pink-deep);}
+  .btn-ghost{
+    border:1px solid var(--ink); color:var(--ink);
+    padding:13px 26px; border-radius:100px; font-size:0.98rem;
+    text-decoration:none; display:inline-block;
+  }
+  .btn-ghost:hover{background:var(--ink); color:var(--white);}
+
+  .hero-motif{
+    justify-self:center;
+  }
+
+  /* ---------- Intro strip ---------- */
+  .strip{
+    border-bottom:1px solid var(--line);
+    background:var(--paper);
+  }
+  .strip .wrap{
+    padding:22px 24px;
+    display:flex; gap:36px; flex-wrap:wrap; justify-content:space-between;
+    font-size:0.92rem; color:var(--pink-deep); font-weight:500;
+  }
+
+  /* ---------- Section headings ---------- */
+  .section{padding:88px 24px;}
+  .section-head{max-width:52ch; margin-bottom:52px;}
+  .section-head h2{font-size:clamp(1.8rem,3vw,2.3rem);}
+  .section-head p{margin-top:14px; color:rgba(36,26,27,0.75); line-height:1.6;}
+
+  /* ---------- Product list (editorial, not cards) ---------- */
+  .product{
+    display:grid; grid-template-columns:120px 1fr auto; gap:28px; align-items:center;
+    padding:30px 0; border-top:1px solid var(--line);
+  }
+  .product:last-child{border-bottom:1px solid var(--line);}
+  .product-icon{width:88px; height:88px;}
+  .product h3{font-size:1.3rem;}
+  .product .desc{margin-top:6px; color:rgba(36,26,27,0.72); font-size:0.95rem; max-width:46ch; line-height:1.55;}
+  .product .meta{margin-top:10px; font-size:0.85rem; color:var(--gold); font-weight:500;}
+  .product-side{text-align:right; display:flex; flex-direction:column; align-items:flex-end; gap:10px;}
+  .price{font-family:'Fraunces'; font-size:1.25rem; color:var(--pink-deep);}
+  .qty-row{display:flex; align-items:center; gap:10px;}
+  .qty-btn{
+    width:30px; height:30px; border-radius:50%; border:1px solid var(--ink);
+    background:none; cursor:pointer; font-size:1rem; line-height:1; color:var(--ink);
+  }
+  .qty-btn:hover{background:var(--ink); color:var(--white);}
+  .qty-val{min-width:18px; text-align:center; font-size:0.95rem;}
+  .add-btn{
+    font-size:0.85rem; text-decoration:underline; background:none; border:none; cursor:pointer; color:var(--pink-deep); padding:0;
+  }
+  @media (max-width:640px){
+    .product{grid-template-columns:64px 1fr; row-gap:14px;}
+    .product-icon{width:56px; height:56px;}
+    .product-side{grid-column:1 / -1; align-items:flex-start; flex-direction:row; justify-content:space-between;}
+  }
+
+  /* ---------- How it works ---------- */
+  .how{background:var(--ink); color:var(--white);}
+  .how .section-head p{color:rgba(255,253,249,0.72);}
+  .how .section-head h2{color:var(--white);}
+  .how-steps{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:36px;
+  }
+  .how-step{border-top:1px solid rgba(255,253,249,0.25); padding-top:18px;}
+  .how-step h3{font-size:1.1rem; color:var(--white); font-family:'Work Sans'; font-weight:600;}
+  .how-step p{margin-top:10px; font-size:0.92rem; color:rgba(255,253,249,0.7); line-height:1.55;}
+  @media (max-width:760px){.how-steps{grid-template-columns:1fr;}}
+
+  /* ---------- Info / hours ---------- */
+  .info-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+  .info-block h3{font-size:1.05rem; font-family:'Work Sans'; font-weight:600; margin-bottom:14px;}
+  .hours-row{display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid var(--line); font-size:0.94rem;}
+  .hours-row:last-child{border-bottom:1px solid var(--line);}
+  @media (max-width:760px){.info-grid{grid-template-columns:1fr; gap:40px;}}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:36px 24px;
+    font-size:0.85rem; color:rgba(36,26,27,0.65);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+  }
+
+  /* ---------- Cart drawer ---------- */
+  .cart-tab{
+    position:fixed; right:20px; bottom:20px; z-index:50;
+    background:var(--pink); color:var(--white); border:none; border-radius:100px;
+    padding:14px 22px; font-size:0.92rem; font-weight:600; cursor:pointer;
+    box-shadow:0 8px 24px rgba(126,15,69,0.28);
+    display:flex; align-items:center; gap:8px;
+  }
+  .cart-tab[hidden]{display:none;}
+
+  .drawer-overlay{
+    position:fixed; inset:0; background:rgba(36,26,27,0.45); z-index:60;
+    opacity:0; pointer-events:none; transition:opacity 0.25s ease;
+  }
+  .drawer-overlay.open{opacity:1; pointer-events:auto;}
+  .drawer{
+    position:fixed; top:0; right:0; height:100%; width:min(420px,92vw);
+    background:var(--white); z-index:61;
+    transform:translateX(100%); transition:transform 0.3s ease;
+    display:flex; flex-direction:column;
+  }
+  .drawer.open{transform:translateX(0);}
+  .drawer-head{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:22px 24px; border-bottom:1px solid var(--line);
+  }
+  .drawer-head h3{font-size:1.2rem;}
+  .drawer-close{background:none; border:none; font-size:1.4rem; cursor:pointer; color:var(--ink);}
+  .drawer-body{flex:1; overflow-y:auto; padding:20px 24px;}
+  .drawer-item{display:flex; justify-content:space-between; gap:12px; padding:14px 0; border-bottom:1px solid var(--line); font-size:0.94rem;}
+  .drawer-item .rm{background:none;border:none;color:var(--pink-deep);text-decoration:underline;cursor:pointer;font-size:0.82rem;padding:0;margin-top:4px;}
+  .drawer-empty{color:rgba(36,26,27,0.55); font-size:0.92rem; padding:30px 0;}
+  .drawer-total{display:flex; justify-content:space-between; font-family:'Fraunces'; font-size:1.15rem; padding:18px 0; border-top:1px solid var(--ink);}
+  .drawer-foot{padding:20px 24px; border-top:1px solid var(--line);}
+  .drawer-foot input, .drawer-foot select{
+    width:100%; padding:11px 12px; margin-bottom:10px; border:1px solid var(--line); border-radius:8px;
+    font-family:'Work Sans'; font-size:0.92rem; background:var(--cream);
+  }
+  .drawer-foot label{font-size:0.82rem; color:rgba(36,26,27,0.65); display:block; margin-bottom:4px;}
+  .field{margin-bottom:12px;}
+  .drawer-note{font-size:0.8rem; color:rgba(36,26,27,0.55); margin-top:12px; line-height:1.5;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#top" class="brand">Desauw Daniel</a>
+    <nav class="nav-links">
+      <a href="#selection">Sélection de fêtes</a>
+      <a href="#comment">Comment commander</a>
+      <a href="#infos">Retrait &amp; horaires</a>
+    </nav>
+    <button class="nav-cart" onclick="openDrawer()">Ma commande <span id="cart-count-nav">(0)</span></button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div>
+      <h1>Les fêtes se préparent,<br>le four aussi.</h1>
+      <p class="lede">Chaque année, la fin décembre se prépare au fournil : bûches travaillées à la main, coffrets gourmands et chocolats maison. Réservez votre sélection pour Noël et le Nouvel An, à retirer en boutique.</p>
+      <div class="hero-ctas">
+        <a href="#selection" class="btn-primary">Voir la sélection de Noël</a>
+        <a href="#infos" class="btn-ghost">Horaires de retrait</a>
+      </div>
+    </div>
+    <div class="hero-motif" aria-hidden="true">
+      <svg width="260" height="260" viewBox="0 0 260 260" fill="none">
+        <circle cx="130" cy="130" r="128" stroke="#E01A73" stroke-opacity="0.25"/>
+        <g transform="translate(58,86)">
+          <rect x="0" y="30" width="144" height="46" rx="23" fill="#7E0F45"/>
+          <rect x="10" y="14" width="124" height="34" rx="17" fill="#E01A73"/>
+          <circle cx="30" cy="31" r="5" fill="#FBF1E6"/>
+          <circle cx="62" cy="31" r="5" fill="#FBF1E6"/>
+          <circle cx="94" cy="31" r="5" fill="#FBF1E6"/>
+          <circle cx="126" cy="31" r="5" fill="#FBF1E6"/>
+          <path d="M12 14 Q 72 -10 132 14" stroke="#B98A34" stroke-width="4" fill="none" stroke-linecap="round"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <span>Retrait uniquement en boutique — Montigny-le-... </span>
+    <span>Commandes de fêtes jusqu'au 22 décembre</span>
+    <span>Réglement sur place, par carte ou espèces</span>
+  </div>
+</div>
+
+<section class="section" id="selection">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>La sélection de fêtes</h2>
+      <p>Cinq créations pensées pour la table de Noël, préparées au fournil dans les jours qui précèdent le retrait. Ajoutez-les à votre commande, on s'occupe du reste.</p>
+    </div>
+
+    <div id="product-list"></div>
+  </div>
+</section>
+
+<section class="section how" id="comment">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Comment ça marche</h2>
+      <p>Trois étapes, aucune inscription, pas d'application à installer.</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-step">
+        <h3>1. Choisissez vos gourmandises</h3>
+        <p>Ajoutez les créations souhaitées à votre commande, avec les quantités et une date de retrait.</p>
+      </div>
+      <div class="how-step">
+        <h3>2. Envoyez votre demande</h3>
+        <p>Votre commande nous parvient directement. On vous confirme la disponibilité par téléphone ou SMS.</p>
+      </div>
+      <div class="how-step">
+        <h3>3. Retirez et réglez en boutique</h3>
+        <p>Le réglement se fait au comptoir, par carte ou en espèces, au moment du retrait.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="infos">
+  <div class="wrap">
+    <div class="info-grid">
+      <div class="info-block">
+        <h3>Horaires de fêtes</h3>
+        <div class="hours-row"><span>Lundi</span><span>Fermé</span></div>
+        <div class="hours-row"><span>Mardi – Vendredi</span><span>7h00 – 19h30</span></div>
+        <div class="hours-row"><span>Samedi</span><span>7h00 – 19h30</span></div>
+        <div class="hours-row"><span>Dimanche</span><span>7h00 – 13h00</span></div>
+        <div class="hours-row"><span>24 &amp; 31 décembre</span><span>7h00 – 16h00</span></div>
+      </div>
+      <div class="info-block">
+        <h3>Retrait &amp; contact</h3>
+        <p style="margin:0 0 8px; line-height:1.6;">Pâtisserie Desauw Daniel<br>À compléter : adresse de la boutique</p>
+        <p style="margin:0; line-height:1.6;">À compléter : numéro de téléphone<br>À compléter : adresse e-mail</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Pâtisserie Desauw Daniel</span>
+  <span>Site vitrine — commandes pour les fêtes de fin d'année</span>
+</footer>
+
+<button class="cart-tab" id="cart-tab" onclick="openDrawer()" hidden>
+  Ma commande <span id="cart-count"></span>
+</button>
+
+<div class="drawer-overlay" id="overlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer" role="dialog" aria-label="Ma commande">
+  <div class="drawer-head">
+    <h3>Ma commande</h3>
+    <button class="drawer-close" onclick="closeDrawer()" aria-label="Fermer">×</button>
+  </div>
+  <div class="drawer-body" id="drawer-body">
+    <p class="drawer-empty">Votre commande est vide pour l'instant.</p>
+  </div>
+  <div class="drawer-foot" id="drawer-foot" style="display:none;">
+    <div class="drawer-total"><span>Total</span><span id="drawer-total-val">0 €</span></div>
+    <div class="field">
+      <label for="f-name">Nom</label>
+      <input id="f-name" type="text" placeholder="Votre nom">
+    </div>
+    <div class="field">
+      <label for="f-phone">Téléphone</label>
+      <input id="f-phone" type="tel" placeholder="06 00 00 00 00">
+    </div>
+    <div class="field">
+      <label for="f-date">Date de retrait souhaitée</label>
+      <input id="f-date" type="date">
+    </div>
+    <button class="btn-primary" style="width:100%;" onclick="sendOrder()">Envoyer ma commande</button>
+    <p class="drawer-note">Cet envoi ouvre votre application e-mail avec la commande pré-remplie. Le réglement se fait en boutique, par carte ou en espèces, au moment du retrait.</p>
+  </div>
+</div>
+
+<script>
+  const products = [
+    {
+      id:'buche-choc',
+      name:'Bûche chocolat noisette',
+      desc:'Biscuit léger, praliné maison et ganache chocolat, croustillant noisette.',
+      meta:'6 à 8 parts',
+      price:32,
+      icon:`<svg viewBox="0 0 88 88" width="88" height="88"><rect x="8" y="34" width="72" height="34" rx="17" fill="#7E0F45"/><rect x="14" y="24" width="60" height="26" rx="13" fill="#E01A73"/><circle cx="30" cy="37" r="4" fill="#FBF1E6"/><circle cx="58" cy="37" r="4" fill="#FBF1E6"/><path d="M16 24 Q44 6 72 24" stroke="#B98A34" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>`
+    },
+    {
+      id:'buche-fruits',
+      name:'Bûche fruits rouges &amp; pistache',
+      desc:'Mousse pistache, insert framboise-cassis, biscuit joconde.',
+      meta:'6 à 8 parts',
+      price:34,
+      icon:`<svg viewBox="0 0 88 88" width="88" height="88"><rect x="8" y="34" width="72" height="34" rx="17" fill="#7E0F45"/><rect x="14" y="24" width="60" height="26" rx="13" fill="#9BAA55"/><circle cx="26" cy="37" r="4" fill="#E01A73"/><circle cx="44" cy="37" r="4" fill="#E01A73"/><circle cx="62" cy="37" r="4" fill="#E01A73"/><path d="M16 24 Q44 6 72 24" stroke="#B98A34" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>`
+    },
+    {
+      id:'coffret',
+      name:'Coffret Douceurs de Noël',
+      desc:'Sablés, mendiants et chocolats assortis dans un coffret cadeau.',
+      meta:'Coffret de 18 pièces',
+      price:28,
+      icon:`<svg viewBox="0 0 88 88" width="88" height="88"><rect x="14" y="30" width="60" height="44" rx="4" fill="#E01A73"/><rect x="14" y="30" width="60" height="14" fill="#7E0F45"/><rect x="40" y="14" width="8" height="60" fill="#B98A34"/><rect x="6" y="38" width="76" height="8" fill="#B98A34"/></svg>`
+    },
+    {
+      id:'chocolats',
+      name:'Boîte de chocolats &amp; mendiants',
+      desc:'Ganaches et mendiants fruits secs, fabrication maison, boîte 500g.',
+      meta:'Boîte de 500g',
+      price:19,
+      icon:`<svg viewBox="0 0 88 88" width="88" height="88"><rect x="12" y="20" width="64" height="48" rx="4" fill="#7E0F45"/><rect x="20" y="28" width="14" height="14" fill="#E01A73"/><rect x="37" y="28" width="14" height="14" fill="#E01A73"/><rect x="54" y="28" width="14" height="14" fill="#E01A73"/><rect x="20" y="45" width="14" height="14" fill="#B98A34"/><rect x="37" y="45" width="14" height="14" fill="#B98A34"/><rect x="54" y="45" width="14" height="14" fill="#B98A34"/></svg>`
+    },
+    {
+      id:'painepices',
+      name:'Pain d\\'épices maison',
+      desc:'Miel de fleurs et épices douces, tranché, format familial.',
+      meta:'Pièce de 400g',
+      price:8,
+      icon:`<svg viewBox="0 0 88 88" width="88" height="88"><rect x="14" y="30" width="60" height="34" rx="17" fill="#B98A34"/><path d="M20 30 Q44 46 68 30" stroke="#7E0F45" stroke-width="3" fill="none"/><path d="M20 42 Q44 58 68 42" stroke="#7E0F45" stroke-width="3" fill="none"/></svg>`
+    }
+  ];
+
+  const cart = {};
+
+  function renderProducts(){
+    const list = document.getElementById('product-list');
+    list.innerHTML = products.map(p => `
+      <div class="product">
+        <div class="product-icon">${p.icon}</div>
+        <div>
+          <h3>${p.name}</h3>
+          <p class="desc">${p.desc}</p>
+          <p class="meta">${p.meta}</p>
+        </div>
+        <div class="product-side">
+          <span class="price">${p.price} €</span>
+          <div class="qty-row">
+            <button class="qty-btn" onclick="changeQty('${p.id}',-1)" aria-label="Retirer un ${p.name}">–</button>
+            <span class="qty-val" id="qty-${p.id}">0</span>
+            <button class="qty-btn" onclick="changeQty('${p.id}',1)" aria-label="Ajouter un ${p.name}">+</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function changeQty(id, delta){
+    const current = cart[id] || 0;
+    const next = Math.max(0, current + delta);
+    if(next === 0){ delete cart[id]; } else { cart[id] = next; }
+    document.getElementById('qty-'+id).textContent = next;
+    updateCartUI();
+  }
+
+  function cartTotal(){
+    return Object.entries(cart).reduce((sum,[id,qty]) => {
+      const p = products.find(p=>p.id===id);
+      return sum + p.price*qty;
+    },0);
+  }
+
+  function cartCount(){
+    return Object.values(cart).reduce((a,b)=>a+b,0);
+  }
+
+  function updateCartUI(){
+    const count = cartCount();
+    const tab = document.getElementById('cart-tab');
+    tab.hidden = count === 0;
+    document.getElementById('cart-count').textContent = `(${count})`;
+    document.getElementById('cart-count-nav').textContent = `(${count})`;
+
+    const body = document.getElementById('drawer-body');
+    const foot = document.getElementById('drawer-foot');
+    if(count === 0){
+      body.innerHTML = '<p class="drawer-empty">Votre commande est vide pour l\\'instant.</p>';
+      foot.style.display = 'none';
+      return;
+    }
+    foot.style.display = 'block';
+    body.innerHTML = Object.entries(cart).map(([id,qty]) => {
+      const p = products.find(p=>p.id===id);
+      return `<div class="drawer-item">
+        <div>
+          <div>${p.name}</div>
+          <div style="color:rgba(36,26,27,0.55); font-size:0.85rem;">${qty} × ${p.price} €</div>
+          <button class="rm" onclick="changeQty('${id}',-${qty})">Retirer</button>
+        </div>
+        <div>${p.price*qty} €</div>
+      </div>`;
+    }).join('');
+    document.getElementById('drawer-total-val').textContent = cartTotal() + ' €';
+  }
+
+  function openDrawer(){
+    document.getElementById('drawer').classList.add('open');
+    document.getElementById('overlay').classList.add('open');
+  }
+  function closeDrawer(){
+    document.getElementById('drawer').classList.remove('open');
+    document.getElementById('overlay').classList.remove('open');
+  }
+
+  function sendOrder(){
+    const name = document.getElementById('f-name').value || '(non renseigné)';
+    const phone = document.getElementById('f-phone').value || '(non renseigné)';
+    const date = document.getElementById('f-date').value || '(non renseignée)';
+    const lines = Object.entries(cart).map(([id,qty]) => {
+      const p = products.find(p=>p.id===id);
+      return `- ${p.name} x${qty} (${p.price*qty} €)`;
+    }).join('%0D%0A');
+    const subject = encodeURIComponent('Commande de fêtes — ' + name);
+    const body = `Nom: ${name}%0D%0ATéléphone: ${phone}%0D%0ADate de retrait souhaitée: ${date}%0D%0A%0D%0ACommande:%0D%0A${lines}%0D%0A%0D%0ATotal: ${cartTotal()} €`;
+    window.location.href = `mailto:?subject=${subject}&body=${body}`;
+  }
+
+  renderProducts();
+  updateCartUI();
+</script>
+
+</body>
+</html>
