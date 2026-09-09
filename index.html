@@ -168,7 +168,8 @@
     padding:30px 0; border-top:1px solid var(--line);
   }
   .product:last-child{border-bottom:1px solid var(--line);}
-  .product-icon{width:88px; height:88px;}
+  .product-icon{width:88px; height:88px; border-radius:14px; overflow:hidden; flex-shrink:0;}
+  .product-icon img{width:100%; height:100%; object-fit:cover; display:block;}
   .product h3{font-size:1.3rem;}
   .product .desc{margin-top:6px; color:rgba(32,33,36,0.72); font-size:0.95rem; max-width:46ch; line-height:1.55;}
   .product .meta{margin-top:10px; font-size:0.85rem; color:var(--gold); font-weight:500;}
@@ -424,7 +425,7 @@
     const list = document.getElementById('product-list');
     list.innerHTML = products.map(p => `
       <div class="product">
-        <div class="product-icon">${p.icon}</div>
+        <div class="product-icon">${p.image ? `<img src="${p.image}" alt="${p.name}" loading="lazy">` : p.icon}</div>
         <div>
           <h3>${p.name}</h3>
           <p class="desc">${p.desc}</p>
@@ -469,28 +470,28 @@
       desc:'Farine de tradition française, pointage long, croûte craquante.',
       meta:'250g',
       price:1.3,
-      icon:`<svg viewBox="0 0 88 88" width="88" height="88"><rect x="10" y="36" width="68" height="16" rx="8" fill="#B98A34"/><path d="M18 36 L24 52 M32 36 L38 52 M46 36 L52 52 M60 36 L66 52" stroke="#7E0F45" stroke-width="2.5" stroke-linecap="round"/></svg>`
+      image:'https://images.pexels.com/photos/18647859/pexels-photo-18647859/free-photo-of-baguette-and-bread.jpeg?w=500&h=500&dpr=1'
     },
     {
       name:'Pain de campagne',
       desc:'Levain naturel, farine de seigle, cuisson sur pierre.',
       meta:'Miche de 500g',
       price:3.5,
-      icon:`<svg viewBox="0 0 88 88" width="88" height="88"><ellipse cx="44" cy="48" rx="34" ry="24" fill="#B98A34"/><path d="M20 40 Q44 30 68 40 M20 50 Q44 60 68 50" stroke="#7E0F45" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`
+      image:'https://images.pexels.com/photos/1383908/pexels-photo-1383908.jpeg?w=500&h=500&dpr=1'
     },
     {
       name:'Pain complet',
       desc:'Farine complète T110, graines de tournesol et de lin.',
       meta:'Pièce de 400g',
       price:3.8,
-      icon:`<svg viewBox="0 0 88 88" width="88" height="88"><ellipse cx="44" cy="48" rx="34" ry="24" fill="#7E0F45"/><circle cx="30" cy="44" r="2.5" fill="#FBF1E6"/><circle cx="44" cy="50" r="2.5" fill="#FBF1E6"/><circle cx="58" cy="44" r="2.5" fill="#FBF1E6"/><circle cx="36" cy="56" r="2.5" fill="#FBF1E6"/><circle cx="52" cy="56" r="2.5" fill="#FBF1E6"/></svg>`
+      image:'https://images.pexels.com/photos/1756062/pexels-photo-1756062.jpeg?w=500&h=500&dpr=1'
     },
     {
       name:'Croissant',
       desc:'Pur beurre, feuilletage maison, cuisson chaque matin.',
       meta:'Pièce',
       price:1.3,
-      icon:`<svg viewBox="0 0 88 88" width="88" height="88"><path d="M18 58 Q10 32 34 20 Q22 34 30 48 Q40 30 60 24 Q52 38 58 50 Q68 40 70 28 Q78 46 62 62 Q42 74 18 58 Z" fill="#B98A34"/></svg>`
+      image:'https://images.pexels.com/photos/2000498/pexels-photo-2000498.jpeg?w=500&h=500&dpr=1'
     },
     {
       name:'Pain au chocolat',
@@ -510,7 +511,7 @@
     const list = document.getElementById(targetId);
     list.innerHTML = items.map(p => `
       <div class="product">
-        <div class="product-icon">${p.icon}</div>
+        <div class="product-icon">${p.image ? `<img src="${p.image}" alt="${p.name}" loading="lazy">` : p.icon}</div>
         <div>
           <h3>${p.name}</h3>
           <p class="desc">${p.desc}</p>
