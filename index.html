@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pâtisserie Desauw Daniel — Fêtes de fin d'année</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,500&family=Work+Sans:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
   :root{
     --cream:#FBF1E6;
@@ -27,7 +27,7 @@
     -webkit-font-smoothing:antialiased;
   }
   h1,h2,h3{
-    font-family:'Fraunces', serif;
+    font-family:'Lora', serif;
     font-weight:500;
     margin:0;
     letter-spacing:-0.01em;
@@ -48,30 +48,49 @@
 
   /* ---------- Header ---------- */
   header{
-    position:sticky; top:0; z-index:40;
-    background:rgba(251,241,230,0.92);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line);
+    position:absolute; top:0; left:0; right:0; z-index:45;
+    background:transparent;
   }
   .nav{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:16px 24px;
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+    padding:24px 24px;
     max-width:1080px; margin:0 auto;
   }
   .brand{
     font-family:'Pinyon Script', cursive;
     font-size:2.1rem;
-    color:var(--pink);
+    color:var(--white);
     line-height:1;
     text-decoration:none;
   }
-  .nav-links{
-    display:flex; gap:28px; font-size:0.95rem;
+  .menu-btn{
+    position:absolute; left:24px; top:50%; transform:translateY(-50%);
+    background:none; border:none; cursor:pointer;
+    width:40px; height:40px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px;
   }
-  .nav-links a{text-decoration:none; border-bottom:1px solid transparent; padding-bottom:2px;}
-  .nav-links a:hover{border-color:var(--pink);}
-  @media (max-width:760px){
-    .nav-links{display:none;}
+  .menu-btn span{
+    display:block; width:22px; height:2px; background:var(--white);
+  }
+  .menu-panel{
+    position:fixed; inset:0; z-index:70;
+    background:var(--cream);
+    display:flex; flex-direction:column;
+    transform:translateX(-100%); transition:transform 0.3s ease;
+  }
+  .menu-panel.open{transform:translateX(0);}
+  .menu-panel-head{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:16px 24px; border-bottom:1px solid var(--line);
+  }
+  .menu-close{background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--ink);}
+  .menu-links{
+    display:flex; flex-direction:column; padding:12px 24px;
+  }
+  .menu-links a{
+    text-decoration:none; color:var(--ink); font-family:'Lora', serif; font-size:1.4rem;
+    padding:18px 0; border-bottom:1px solid var(--line);
   }
 
   /* ---------- Hero ---------- */
@@ -87,7 +106,9 @@
   .hero-video{
     position:absolute; inset:0; z-index:0;
     width:100%; height:100%; object-fit:cover;
+    opacity:0; transition:opacity 1.6s ease;
   }
+  .hero-video.visible{opacity:1;}
   .hero-overlay{
     position:absolute; inset:0; z-index:1;
     background:linear-gradient(180deg, rgba(36,20,22,0.25) 0%, rgba(36,20,22,0.15) 40%, rgba(36,20,22,0.78) 100%);
@@ -152,7 +173,7 @@
   .product .desc{margin-top:6px; color:rgba(36,26,27,0.72); font-size:0.95rem; max-width:46ch; line-height:1.55;}
   .product .meta{margin-top:10px; font-size:0.85rem; color:var(--gold); font-weight:500;}
   .product-side{text-align:right;}
-  .price{font-family:'Fraunces'; font-size:1.25rem; color:var(--pink-deep);}
+  .price{font-family:'Lora'; font-size:1.25rem; color:var(--pink-deep);}
   @media (max-width:640px){
     .product{grid-template-columns:64px 1fr; row-gap:14px;}
     .product-icon{width:56px; height:56px;}
@@ -191,18 +212,31 @@
 
 <header>
   <div class="nav">
+    <button class="menu-btn" onclick="openMenu()" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
     <a href="#top" class="brand">Desauw Daniel</a>
-    <nav class="nav-links">
-      <a href="#selection">Sélection de fêtes</a>
-      <a href="#comment">Paiement en ligne</a>
-      <a href="#infos">Retrait &amp; horaires</a>
-    </nav>
   </div>
 </header>
 
+<div class="menu-panel" id="menu-panel">
+  <div class="menu-panel-head">
+    <span class="brand" style="font-size:1.7rem; color:var(--pink);">Desauw Daniel</span>
+    <button class="menu-close" onclick="closeMenu()" aria-label="Fermer le menu">×</button>
+  </div>
+  <nav class="menu-links">
+    <a href="#selection" onclick="closeMenu()">Sélection de fêtes</a>
+    <a href="#comment" onclick="closeMenu()">Paiement en ligne</a>
+    <a href="#infos" onclick="closeMenu()">Retrait &amp; horaires</a>
+  </nav>
+</div>
+
 <section class="hero" id="top">
-  <video class="hero-video" autoplay muted loop playsinline poster="https://images.pexels.com/videos/3195294/free-video-3195294.jpg">
+  <video class="hero-video visible" id="hero-video-1" autoplay muted loop playsinline poster="https://images.pexels.com/videos/3195294/free-video-3195294.jpg">
     <source src="https://videos.pexels.com/video-files/3195294/3195294-uhd_2560_1440_25fps.mp4" type="video/mp4">
+  </video>
+  <video class="hero-video" id="hero-video-2" muted loop playsinline poster="https://images.pexels.com/videos/5930369/pexels-photo-5930369.jpeg">
+    <source src="https://videos.pexels.com/video-files/5930369/5930369-uhd_1440_2560_30fps.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-inner">
@@ -266,6 +300,21 @@
 </footer>
 
 <script>
+  function openMenu(){ document.getElementById('menu-panel').classList.add('open'); }
+  function closeMenu(){ document.getElementById('menu-panel').classList.remove('open'); }
+
+  const heroVideos = [document.getElementById('hero-video-1'), document.getElementById('hero-video-2')];
+  let heroIndex = 0;
+  setInterval(() => {
+    const current = heroVideos[heroIndex];
+    const next = heroVideos[(heroIndex + 1) % heroVideos.length];
+    next.currentTime = 0;
+    next.play();
+    next.classList.add('visible');
+    current.classList.remove('visible');
+    heroIndex = (heroIndex + 1) % heroVideos.length;
+  }, 9000);
+
   const products = [
     {
       id:'buche-choc',
